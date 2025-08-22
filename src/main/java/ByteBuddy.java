@@ -81,6 +81,27 @@ public class ByteBuddy {
                     Task t = new Event(desc, from, to);
                     tasks.add(t);
                     printAdded(tasks, t);
+                } else if (input.startsWith("delete")) {
+                    String body = input.length() > 6 ? input.substring(6).trim() : "";
+                    if (body.isEmpty()) {
+                        throw new MissingDescriptionException("delete");
+                    }
+                    try {
+                        int idx = Integer.parseInt(body) - 1;
+                        if (idx >= 0 && idx < tasks.size()) {
+                            Task removed = tasks.remove(idx);
+                            System.out.println(LINE);
+                            System.out.println("Noted. I've removed this task:");
+                            System.out.println("  " + removed);
+                            String ts = tasks.size() > 1 ? "tasks" : "task";
+                            System.out.println("Now you have " + tasks.size() + " " + ts + " in the list.");
+                            System.out.println(LINE);
+                        } else {
+                            throw new ByteBuddyException("Error: That task number does not exist.");
+                        }
+                    } catch (NumberFormatException e) {
+                        throw new ByteBuddyException("Error: Please provide a valid task number to delete.");
+                    }
                 } else {
                     throw new UnknownCommandException();
                 }
