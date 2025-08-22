@@ -42,7 +42,6 @@ public class ByteBuddy {
                 }
             } else if (input.startsWith("todo ")) {
                 String desc = input.substring(5).trim();
-                System.out.println(desc);
                 if (desc.isEmpty()) {
                     printLineMsg("Error: The description of a todo cannot be empty.");
                     continue;
@@ -109,7 +108,8 @@ public class ByteBuddy {
         System.out.println(LINE);
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + t);
-        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+        String ts = tasks.size() > 1 ? "tasks" : "task";
+        System.out.println("Now you have " + tasks.size() + " " + ts + " in the list.");
         System.out.println(LINE);
     }
 
