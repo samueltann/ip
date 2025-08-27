@@ -13,6 +13,10 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    public String getPath() {
+        return filePath;
+    }
+
     public ArrayList<Task> load() throws IOException {
         File file = new File(filePath);
         ArrayList<Task> tasks = new ArrayList<>();
@@ -55,7 +59,8 @@ public class Storage {
             case "D":
                 return new Deadline(parts[2], parts[3], isDone);
             case "E":
-                return new Event(parts[2], parts[3], parts[4], isDone);
+                String[] timeframe = parts[3].split("-");;
+                return new Event(parts[2], timeframe[0], timeframe[1], isDone);
             default:
                 throw new RuntimeException("Corrupted save file!");
         }
