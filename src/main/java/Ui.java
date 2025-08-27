@@ -30,6 +30,26 @@ public class Ui {
         scanner.close();
     }
 
+    public void printTaskList(TaskList tasks) {
+        System.out.println(LINE);
+        System.out.println("Here are the tasks in your list:");
+        for (int i = 0; i < tasks.getSize(); i++) {
+            System.out.println((i + 1) + ". " + tasks.getTask(i));
+        }
+        System.out.println(LINE);
+    }
+
+    public void printMarked(Task t, boolean marked) {
+        System.out.println(LINE);
+        if(marked){
+            System.out.println("Nice! I've marked this task as done:");
+        } else {
+            System.out.println("OK, I've marked this task as not done yet:");
+        }
+        System.out.println("  " + t);
+        System.out.println(LINE);
+    }
+
 
     public void printAdded(TaskList tasks, Task t) {
         System.out.println(LINE);
@@ -43,6 +63,10 @@ public class Ui {
     private void printLineMsg(String msg) {
         System.out.println(LINE);
         System.out.println(msg);
+        System.out.println(LINE);
+    }
+
+    public void showLine() {
         System.out.println(LINE);
     }
 
