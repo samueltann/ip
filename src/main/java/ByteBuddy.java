@@ -6,27 +6,39 @@ public class ByteBuddy {
     public static final String LINE = "____________________________________________________________";
     private static final String FILE_PATH = "src/main/data/tasks.txt";
 
-    public static void main(String[] args) {
-        Storage storage = new Storage(FILE_PATH);
-        System.out.println(storage.getPath());
-        TaskList tasks;
+    private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
+
+    public ByteBuddy(String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
+        try {
+            tasks = storage.load();
+        } catch (IOException e) {
+            ui.showLoadingError();
+            ui.printFarewell();
+            return;
+        }
+    }
+
+    public void run() {
         try {
             tasks = storage.load();
         } catch (IOException e) {
             System.out.println("Error loading tasks.txt file.");
-            printFarewell();
+            ui.printFarewell();
             return;
         }
 
-        Scanner scanner = new Scanner(System.in);
-        printGreeting();
+        ui.printGreeting();
         String input;
         while (true) {
-            input = scanner.nextLine().trim();
+            input = ui.readCommand();
             try {
                 if (input.equalsIgnoreCase("bye")) {
                     storage.save(tasks);
-                    printFarewell();
+                    ui.printFarewell();
                     break;
                 } else if (input.equalsIgnoreCase("list")) {
                     System.out.println(LINE);
@@ -60,7 +72,7 @@ public class ByteBuddy {
                     }
                     Task t = new Todo(desc);
                     tasks.addTask(t);
-                    printAdded(tasks, t);
+                    ui.printAdded(tasks, t);
                 } else if (input.startsWith("deadline")) {
                     String body = input.length() > 8 ? input.substring(8).trim() : "";
                     if (body.isEmpty()) {
@@ -74,7 +86,7 @@ public class ByteBuddy {
                     String by = body.substring(byIdx + 3).trim();
                     Task t = new Deadline(desc, by);
                     tasks.addTask(t);
-                    printAdded(tasks, t);
+                    ui.printAdded(tasks, t);
                 } else if (input.startsWith("event")) {
                     String body = input.length() > 5 ? input.substring(5).trim() : "";
                     if (body.isEmpty()) {
@@ -93,7 +105,7 @@ public class ByteBuddy {
                     String to = body.substring(toIdx + 3).trim();
                     Task t = new Event(desc, from, to);
                     tasks.addTask(t);
-                    printAdded(tasks, t);
+                    ui.printAdded(tasks, t);
                 } else if (input.startsWith("delete")) {
                     String body = input.length() > 6 ? input.substring(6).trim() : "";
                     if (body.isEmpty()) {
@@ -119,40 +131,12 @@ public class ByteBuddy {
                     throw new UnknownCommandException();
                 }
             } catch (ByteBuddyException e) {
-                System.out.println(LINE);
-                System.out.println(e.getMessage());
-                System.out.println(LINE);
+                ui.printError(e.getMessage());
             }
         }
-        scanner.close();
     }
-
-
-    private static void printGreeting() {
-        System.out.println(LINE);
-        System.out.println("Hello! I'm ByteBuddy\n" + "What can I do for you?");
-        System.out.println(LINE);
+    public static void main(String[] args) {
+        ByteBuddy buddy = new ByteBuddy(FILE_PATH);
+        buddy.run();
     }
-
-    private static void printFarewell() {
-        System.out.println(LINE);
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println(LINE);
-    }
-
-    private static void printAdded(TaskList tasks, Task t) {
-        System.out.println(LINE);
-        System.out.println("Got it. I've added this task:");
-        System.out.println("  " + t);
-        String ts = tasks.getSize() > 1 ? "tasks" : "task";
-        System.out.println("Now you have " + tasks.getSize() + " " + ts + " in the list.");
-        System.out.println(LINE);
-    }
-
-    private static void printLineMsg(String msg) {
-        System.out.println(LINE);
-        System.out.println(msg);
-        System.out.println(LINE);
-    }
-
 }
