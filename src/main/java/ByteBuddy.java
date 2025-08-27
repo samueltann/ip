@@ -1,11 +1,23 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ByteBuddy {
     public static final String LINE = "____________________________________________________________";
+    private static final String FILE_PATH = "src/main/data/tasks.txt";
 
     public static void main(String[] args) {
-        ArrayList<Task> tasks = new ArrayList<>();
+        Storage storage = new Storage(FILE_PATH);
+        System.out.println(storage.getPath());
+        ArrayList<Task> tasks;
+        try {
+            tasks = storage.load();
+        } catch (IOException e) {
+            System.out.println("Error loading tasks.txt file.");
+            printFarewell();
+            return;
+        }
+
         Scanner scanner = new Scanner(System.in);
         printGreeting();
         String input;
@@ -13,13 +25,14 @@ public class ByteBuddy {
             input = scanner.nextLine().trim();
             try {
                 if (input.equalsIgnoreCase("bye")) {
+                    storage.save(tasks);
                     printFarewell();
                     break;
                 } else if (input.equalsIgnoreCase("list")) {
                     System.out.println(LINE);
                     System.out.println("Here are the tasks in your list:");
                     for (int i = 0; i < tasks.size(); i++) {
-                        System.out.println((i + 1) + "." + tasks.get(i));
+                        System.out.println((i + 1) + ". " + tasks.get(i));
                     }
                     System.out.println(LINE);
                 } else if (input.startsWith("mark ")) {
@@ -113,6 +126,7 @@ public class ByteBuddy {
         }
         scanner.close();
     }
+
 
     private static void printGreeting() {
         System.out.println(LINE);

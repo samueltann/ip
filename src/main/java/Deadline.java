@@ -7,8 +7,13 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    public Deadline(String description, String by, boolean isDone) {
+        super(description, TaskType.DEADLINE, isDone);
+        this.by = by;
+    }
+
     @Override
     public String toString() {
-        return "["+ taskType.getSymbol() + "]" + super.toString() + " (by: " + by + ")";
+        return super.toString() + " | " + by;
     }
 }
