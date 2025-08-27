@@ -20,9 +20,9 @@ public class Storage {
         return filePath;
     }
 
-    public ArrayList<Task> load() throws IOException {
+    public TaskList load() throws IOException {
         File file = new File(filePath);
-        ArrayList<Task> tasks = new ArrayList<>();
+        TaskList tasks = new TaskList();
         if (!file.exists()) {
             file.getParentFile().mkdirs(); // make ./data if missing
             file.createNewFile();
@@ -34,13 +34,13 @@ public class Storage {
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(" \\| ");
             Task t = parse(parts);
-            tasks.add(t);
+            tasks.addTask(t);
         }
         br.close();
         return tasks;
     }
 
-    public void save(ArrayList<Task> tasks) {
+    public void save(TaskList tasks) {
         try{
         BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
         for (Task t : tasks) {
