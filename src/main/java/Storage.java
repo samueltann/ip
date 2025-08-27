@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Storage {
@@ -53,14 +56,20 @@ public class Storage {
     private Task parse(String[] parts) {
         String type = parts[0];
         boolean isDone = parts[1].equals("1");
+        DateTimeFormatter inputFormat;
         switch (type) {
             case "T":
                 return new Todo(parts[2], isDone);
             case "D":
-                return new Deadline(parts[2], parts[3], isDone);
+                inputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
+                LocalDate by = LocalDate.parse(parts[3], inputFormat);
+                return new Deadline(parts[2], by, isDone);
             case "E":
-                String[] timeframe = parts[3].split("-");;
-                return new Event(parts[2], timeframe[0], timeframe[1], isDone);
+                String[] timeframe = parts[3].split(" to ");
+                inputFormat = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+                LocalDateTime from = LocalDateTime.parse(timeframe[0], inputFormat);
+                LocalDateTime to = LocalDateTime.parse(timeframe[1], inputFormat);
+                return new Event(parts[2], from, to, isDone);
             default:
                 throw new RuntimeException("Corrupted save file!");
         }
