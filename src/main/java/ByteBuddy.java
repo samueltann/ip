@@ -9,7 +9,7 @@ public class ByteBuddy {
     public static void main(String[] args) {
         Storage storage = new Storage(FILE_PATH);
         System.out.println(storage.getPath());
-        ArrayList<Task> tasks;
+        TaskList tasks;
         try {
             tasks = storage.load();
         } catch (IOException e) {
@@ -31,26 +31,26 @@ public class ByteBuddy {
                 } else if (input.equalsIgnoreCase("list")) {
                     System.out.println(LINE);
                     System.out.println("Here are the tasks in your list:");
-                    for (int i = 0; i < tasks.size(); i++) {
-                        System.out.println((i + 1) + ". " + tasks.get(i));
+                    for (int i = 0; i < tasks.getSize(); i++) {
+                        System.out.println((i + 1) + ". " + tasks.getTask(i));
                     }
                     System.out.println(LINE);
                 } else if (input.startsWith("mark ")) {
                     int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                    if (index >= 0 && index < tasks.size()) {
-                        tasks.get(index).markAsDone();
+                    if (index >= 0 && index < tasks.getSize()) {
+                        tasks.getTask(index).markAsDone();
                         System.out.println(LINE);
                         System.out.println("Nice! I've marked this task as done:");
-                        System.out.println("  " + tasks.get(index));
+                        System.out.println("  " + tasks.getTask(index));
                         System.out.println(LINE);
                     }
                 } else if (input.startsWith("unmark ")) {
                     int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                    if (index >= 0 && index < tasks.size()) {
-                        tasks.get(index).markAsNotDone();
+                    if (index >= 0 && index < tasks.getSize()) {
+                        tasks.getTask(index).markAsNotDone();
                         System.out.println(LINE);
                         System.out.println("OK, I've marked this task as not done yet:");
-                        System.out.println("  " + tasks.get(index));
+                        System.out.println("  " + tasks.getTask(index));
                         System.out.println(LINE);
                     }
                 } else if (input.startsWith("todo")) {
@@ -59,7 +59,7 @@ public class ByteBuddy {
                         throw new MissingDescriptionException("todo");
                     }
                     Task t = new Todo(desc);
-                    tasks.add(t);
+                    tasks.addTask(t);
                     printAdded(tasks, t);
                 } else if (input.startsWith("deadline")) {
                     String body = input.length() > 8 ? input.substring(8).trim() : "";
@@ -73,7 +73,7 @@ public class ByteBuddy {
                     String desc = body.substring(0, byIdx).trim();
                     String by = body.substring(byIdx + 3).trim();
                     Task t = new Deadline(desc, by);
-                    tasks.add(t);
+                    tasks.addTask(t);
                     printAdded(tasks, t);
                 } else if (input.startsWith("event")) {
                     String body = input.length() > 5 ? input.substring(5).trim() : "";
@@ -92,7 +92,7 @@ public class ByteBuddy {
                     String from = body.substring(fromIdx + 5, toIdx).trim();
                     String to = body.substring(toIdx + 3).trim();
                     Task t = new Event(desc, from, to);
-                    tasks.add(t);
+                    tasks.addTask(t);
                     printAdded(tasks, t);
                 } else if (input.startsWith("delete")) {
                     String body = input.length() > 6 ? input.substring(6).trim() : "";
@@ -101,13 +101,13 @@ public class ByteBuddy {
                     }
                     try {
                         int idx = Integer.parseInt(body) - 1;
-                        if (idx >= 0 && idx < tasks.size()) {
-                            Task removed = tasks.remove(idx);
+                        if (idx >= 0 && idx < tasks.getSize()) {
+                            Task removed = tasks.removeTask(idx);
                             System.out.println(LINE);
                             System.out.println("Noted. I've removed this task:");
                             System.out.println("  " + removed);
-                            String ts = tasks.size() > 1 ? "tasks" : "task";
-                            System.out.println("Now you have " + tasks.size() + " " + ts + " in the list.");
+                            String ts = tasks.getSize() > 1 ? "tasks" : "task";
+                            System.out.println("Now you have " + tasks.getSize() + " " + ts + " in the list.");
                             System.out.println(LINE);
                         } else {
                             throw new ByteBuddyException("Error: That task number does not exist.");
@@ -140,12 +140,12 @@ public class ByteBuddy {
         System.out.println(LINE);
     }
 
-    private static void printAdded(ArrayList<Task> tasks, Task t) {
+    private static void printAdded(TaskList tasks, Task t) {
         System.out.println(LINE);
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + t);
-        String ts = tasks.size() > 1 ? "tasks" : "task";
-        System.out.println("Now you have " + tasks.size() + " " + ts + " in the list.");
+        String ts = tasks.getSize() > 1 ? "tasks" : "task";
+        System.out.println("Now you have " + tasks.getSize() + " " + ts + " in the list.");
         System.out.println(LINE);
     }
 
