@@ -1,9 +1,7 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ByteBuddy {
-    public static final String LINE = "____________________________________________________________";
+
     private static final String FILE_PATH = "src/main/data/tasks.txt";
 
     private Storage storage;
@@ -18,7 +16,6 @@ public class ByteBuddy {
         } catch (IOException e) {
             ui.showLoadingError();
             ui.printFarewell();
-            return;
         }
     }
 
