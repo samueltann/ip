@@ -1,7 +1,14 @@
+package bytebuddy.command;
+
+import bytebuddy.storage.Storage;
+import bytebuddy.task.Task;
+import bytebuddy.task.TaskList;
+import bytebuddy.ui.Ui;
+
 public class MarkCommand extends Command {
     private final int index;
 
-    MarkCommand(int taskIndex) {
+    public MarkCommand(int taskIndex) {
         super(false);
         this.index = taskIndex;
     }

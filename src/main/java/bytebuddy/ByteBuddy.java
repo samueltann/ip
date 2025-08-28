@@ -1,3 +1,11 @@
+package bytebuddy;
+
+import bytebuddy.command.Command;
+import bytebuddy.exception.ByteBuddyException;
+import bytebuddy.parser.Parser;
+import bytebuddy.storage.Storage;
+import bytebuddy.task.TaskList;
+import bytebuddy.ui.Ui;
 import java.io.IOException;
 
 public class ByteBuddy {

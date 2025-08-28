@@ -1,3 +1,5 @@
+package bytebuddy.task;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,11 +11,6 @@ public class TaskList implements Iterable<Task> {
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
-//    public void printTasks() {
-//        for (int i = 0; i < tasks.size(); i++) {
-//            System.out.println((i + 1) + ". " + tasks.get(i));
-//        }
-//    }
 
     public void markTask(int index) {
         if (index >= 0 && index < tasks.size()) {

@@ -1,4 +1,8 @@
+package bytebuddy.ui;
+
 import java.util.Scanner;
+import bytebuddy.task.Task;
+import bytebuddy.task.TaskList;
 
 public class Ui {
     public static final String LINE = "____________________________________________________________";
@@ -13,7 +17,7 @@ public class Ui {
     }
 
     public void printGreeting() {
-        printLineMsg("Hello! I'm ByteBuddy\n" + "What can I do for you?");
+        printLineMsg("Hello! I'm bytebuddy.ByteBuddy\n" + "What can I do for you?");
     }
 
     public void printFarewell() {

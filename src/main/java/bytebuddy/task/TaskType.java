@@ -1,3 +1,5 @@
+package bytebuddy.task;
+
 public enum TaskType {
     TODO("T"),
     DEADLINE("D"),

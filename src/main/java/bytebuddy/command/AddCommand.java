@@ -1,4 +1,11 @@
-public class AddCommand extends Command{
+package bytebuddy.command;
+
+import bytebuddy.storage.Storage;
+import bytebuddy.task.Task;
+import bytebuddy.task.TaskList;
+import bytebuddy.ui.Ui;
+
+public class AddCommand extends Command {
     private Task task;
 
     public AddCommand(Task task) {
