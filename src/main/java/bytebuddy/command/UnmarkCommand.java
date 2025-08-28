@@ -1,7 +1,14 @@
+package bytebuddy.command;
+
+import bytebuddy.task.Task;
+import bytebuddy.task.TaskList;
+import bytebuddy.ui.Ui;
+import bytebuddy.storage.Storage;
+
 public class UnmarkCommand extends Command {
     private final int index;
 
-    UnmarkCommand(int taskIndex) {
+    public UnmarkCommand(int taskIndex) {
         super(false);
         this.index = taskIndex;
     }

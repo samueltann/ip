@@ -1,3 +1,9 @@
+package bytebuddy.command;
+
+import bytebuddy.storage.Storage;
+import bytebuddy.task.TaskList;
+import bytebuddy.ui.Ui;
+
 public abstract class Command {
 
     boolean isExit;

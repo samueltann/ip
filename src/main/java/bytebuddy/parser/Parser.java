@@ -1,3 +1,20 @@
+package bytebuddy.parser;
+
+import bytebuddy.command.*;
+import bytebuddy.task.Deadline;
+import bytebuddy.task.Event;
+import bytebuddy.task.Task;
+import bytebuddy.task.Todo;
+import bytebuddy.exception.MissingDescriptionException;
+import bytebuddy.exception.MissingTimeException;
+import bytebuddy.command.AddCommand;
+import bytebuddy.command.DeleteCommand;
+import bytebuddy.command.UnknownCommand;
+import bytebuddy.command.ByeCommand;
+import bytebuddy.command.ListCommand;
+import bytebuddy.command.MarkCommand;
+import bytebuddy.command.UnmarkCommand;
+
 public class Parser {
     public static Command parse(String input) {
             if (input.equalsIgnoreCase("bye")) {

@@ -1,8 +1,18 @@
+package bytebuddy.command;
+
+import bytebuddy.storage.Storage;
+import bytebuddy.task.Task;
+import bytebuddy.task.TaskList;
+import bytebuddy.ui.Ui;
+import bytebuddy.exception.ByteBuddyException;
+import bytebuddy.exception.MissingDescriptionException;
+import bytebuddy.exception.UnknownCommandException;
+
 public class DeleteCommand extends Command {
 
     private final String body;
 
-    DeleteCommand(String body) {
+    public DeleteCommand(String body) {
         super(false);
         this.body = body;
     }
