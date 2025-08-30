@@ -1,4 +1,4 @@
-# bytebuddy.ByteBuddy User Guide
+# bytebuddy.bytebuddy User Guide
 
 // Update the title above to match the actual product name
 
