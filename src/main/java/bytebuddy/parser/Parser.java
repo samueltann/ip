@@ -68,6 +68,9 @@ public class Parser {
             } else if (input.startsWith("delete")) {
                 String body = input.length() > 6 ? input.substring(6).trim() : "";
                 return new DeleteCommand(body);
+            } else if (input.startsWith("find")) {
+                String keyword = input.length() > 4 ? input.substring(6).trim() : "";
+                return new FindCommand(keyword);
             } else {
                 return new UnknownCommand();
             }

@@ -40,6 +40,16 @@ public class TaskList implements Iterable<Task> {
         return tasks.remove(index);
     }
 
+    public TaskList findTasks(String keyword) {
+        ArrayList<Task> matchedTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.description.contains(keyword)) {
+                matchedTasks.add(task);
+            }
+        }
+        return new TaskList(matchedTasks);
+    }
+
     @Override
     public Iterator<Task> iterator() {
         return tasks.iterator();
