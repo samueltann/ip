@@ -55,6 +55,7 @@ public class ByteBuddy {
             }
         }
     }
+
     public static void main(String[] args) {
         ByteBuddy buddy = new ByteBuddy(FILE_PATH);
         buddy.run();
