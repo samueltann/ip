@@ -8,6 +8,10 @@ import bytebuddy.task.TaskList;
 import bytebuddy.ui.Ui;
 import java.io.IOException;
 
+/**
+ * Represents the main ByteBuddy chatbot application.
+ * Handles user input, executes commands, and manages the task list.
+ */
 public class ByteBuddy {
 
     private static final String FILE_PATH = "src/main/data/tasks.txt";
