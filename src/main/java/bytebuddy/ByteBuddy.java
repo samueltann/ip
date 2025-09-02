@@ -77,6 +77,13 @@ public class ByteBuddy {
     }
 
     /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        return "ByteBuddy heard: " + input;
+    }
+
+    /**
      * The entry point of the ByteBuddy application.
      *
      * @param args command-line arguments (not used)
