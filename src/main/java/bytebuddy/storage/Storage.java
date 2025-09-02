@@ -1,7 +1,5 @@
 package bytebuddy.storage;
 
-import bytebuddy.task.*;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,6 +9,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import bytebuddy.task.Deadline;
+import bytebuddy.task.Event;
+import bytebuddy.task.Task;
+import bytebuddy.task.TaskList;
+import bytebuddy.task.Todo;
 
 /**
  * Handles reading and writing tasks to the disk.
@@ -58,14 +62,14 @@ public class Storage {
      * @param tasks The TaskList to save
      */
     public void save(TaskList tasks) {
-        try{
-        BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
-        for (Task t : tasks) {
-            bw.write(t.toString());
-            bw.newLine();
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
+            for (Task t : tasks) {
+                bw.write(t.toString());
+                bw.newLine();
         }
-        bw.close();
-        } catch(IOException e) {
+            bw.close();
+        } catch (IOException e) {
             System.out.println("Error saving to file: " + e.getMessage());
         }
     }
@@ -82,20 +86,20 @@ public class Storage {
         boolean isDone = parts[1].equals("1");
         DateTimeFormatter inputFormat;
         switch (type) {
-            case "T":
-                return new Todo(parts[2], isDone);
-            case "D":
-                inputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
-                LocalDate by = LocalDate.parse(parts[3], inputFormat);
-                return new Deadline(parts[2], by, isDone);
-            case "E":
-                String[] timeframe = parts[3].split(" to ");
-                inputFormat = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
-                LocalDateTime from = LocalDateTime.parse(timeframe[0], inputFormat);
-                LocalDateTime to = LocalDateTime.parse(timeframe[1], inputFormat);
-                return new Event(parts[2], from, to, isDone);
-            default:
-                throw new RuntimeException("Corrupted save file!");
+        case "T":
+            return new Todo(parts[2], isDone);
+        case "D":
+            inputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
+            LocalDate by = LocalDate.parse(parts[3], inputFormat);
+            return new Deadline(parts[2], by, isDone);
+        case "E":
+            String[] timeframe = parts[3].split(" to ");
+            inputFormat = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+            LocalDateTime from = LocalDateTime.parse(timeframe[0], inputFormat);
+            LocalDateTime to = LocalDateTime.parse(timeframe[1], inputFormat);
+            return new Event(parts[2], from, to, isDone);
+        default:
+            throw new RuntimeException("Corrupted save file!");
         }
     }
 }

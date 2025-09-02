@@ -1,6 +1,7 @@
 package bytebuddy.ui;
 
 import java.util.Scanner;
+
 import bytebuddy.task.Task;
 import bytebuddy.task.TaskList;
 
@@ -93,7 +94,7 @@ public class Ui {
      */
     public void printMarked(Task t, boolean marked) {
         System.out.println(LINE);
-        if(marked){
+        if (marked) {
             System.out.println("Nice! I've marked this task as done:");
         } else {
             System.out.println("OK, I've marked this task as not done yet:");

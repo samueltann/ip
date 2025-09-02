@@ -1,14 +1,13 @@
 package bytebuddy.command;
 
+import org.junit.jupiter.api.Test;
+
 import bytebuddy.storage.Storage;
 import bytebuddy.task.Task;
 import bytebuddy.task.TaskList;
 import bytebuddy.task.TaskType;
 import bytebuddy.ui.Ui;
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 

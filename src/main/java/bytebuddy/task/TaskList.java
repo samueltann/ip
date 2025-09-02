@@ -90,6 +90,22 @@ public class TaskList implements Iterable<Task> {
         return tasks.remove(index);
     }
 
+    /**
+     * Finds tasks that contain the given keyword in their description.
+     *
+     * @param keyword The keyword to search for.
+     * @return A new {@link TaskList} containing matching tasks.
+     */
+    public TaskList findTasks(String keyword) {
+        TaskList results = new TaskList();
+        for (Task task : tasks) {
+            if (task.toString().contains(keyword)) {
+                results.addTask(task);
+            }
+        }
+        return results;
+    }
+
 
     /**
      * Returns an iterator over the tasks in this list.
