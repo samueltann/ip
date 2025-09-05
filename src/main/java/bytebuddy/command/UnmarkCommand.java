@@ -14,11 +14,12 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList tasks, Ui ui) {
+    public String execute(Storage storage, TaskList tasks, Ui ui) {
         if (index >= 0 && index < tasks.getSize()) {
             Task t = tasks.getTask(index);
             t.markAsNotDone();
-            ui.printMarked(t, false);
+            return ui.getMarkedMessage(t, false);
         }
+        return ui.getErrorMessage("Error: Invalid task index.");
     }
 }

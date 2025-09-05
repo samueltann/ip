@@ -1,6 +1,7 @@
 package bytebuddy.gui;
 
 import bytebuddy.ByteBuddy;
+import bytebuddy.ui.Ui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -31,13 +32,18 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
+    /** Injects the ByteBuddy instance */
     public void setByteBuddy(ByteBuddy d) {
         byteBuddy = d;
+        Ui ui = new Ui();
+        // Show welcome message once backend is ready
+        dialogContainer.getChildren().add(
+                DialogBox.getByteBuddyDialog(ui.getGreetingMessage(), byteBuddyImage)
+        );
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
+     * Creates two dialog boxes, one echoing user input and the other containing ByteBuddy's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
     @FXML

@@ -14,11 +14,11 @@ public class FindCommand extends Command {
         this.keyword = keyword;
     }
     @Override
-    public void execute(Storage storage, TaskList tasks, Ui ui) {
+    public String execute(Storage storage, TaskList tasks, Ui ui) {
         if (keyword.isEmpty()) {
             throw new MissingDescriptionException("find");
         }
         TaskList results = tasks.findTasks(keyword);
-        ui.printTaskList(results);
+        return ui.getTaskListMessage(results);
     }
 }

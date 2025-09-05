@@ -10,7 +10,7 @@ public class UnknownCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList tasks, Ui ui) {
-        ui.printError("Error: Unknown command");
+    public String execute(Storage storage, TaskList tasks, Ui ui) {
+        return ui.getErrorMessage("Error: Unknown command");
     }
 }

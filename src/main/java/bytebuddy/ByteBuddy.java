@@ -39,40 +39,8 @@ public class ByteBuddy {
         try {
             tasks = storage.load();
         } catch (IOException e) {
-            ui.showLoadingError();
-            ui.printFarewell();
-        }
-    }
-
-    /**
-     * Starts the chatbot, reads user commands, executes them, and updates storage.
-     * <p>
-     * This method runs the main loop of the application, displaying greetings,
-     * handling user commands, catching exceptions, and saving the task list after
-     * each command.
-     */
-    public void run() {
-        try {
-            tasks = storage.load();
-        } catch (IOException e) {
-            System.out.println("Error loading tasks.txt file.");
-            ui.printFarewell();
-            return;
-        }
-
-        ui.printGreeting();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                Command c = Parser.parse(fullCommand);
-                c.execute(storage, tasks, ui);
-                isExit = c.isExit();
-            } catch (ByteBuddyException e) {
-                ui.printError(e.getMessage());
-            } finally {
-                storage.save(tasks);
-            }
+            ui.getLoadingErrorMessage();
+            ui.getFarewellMessage();
         }
     }
 
@@ -80,16 +48,16 @@ public class ByteBuddy {
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
-        return "ByteBuddy heard: " + input;
-    }
-
-    /**
-     * The entry point of the ByteBuddy application.
-     *
-     * @param args command-line arguments (not used)
-     */
-    public static void main(String[] args) {
-        ByteBuddy buddy = new ByteBuddy(FILE_PATH);
-        buddy.run();
+        try {
+            Command c = Parser.parse(input);
+            // Instead of printing, let Command return a response String
+            String response = c.execute(storage, tasks, ui);
+            storage.save(tasks);
+            return response;
+        } catch (ByteBuddyException e) {
+            return "Error: " + e.getMessage();
+        } catch (Exception e) {
+            return "Something went wrong: " + e.getMessage();
+        }
     }
 }

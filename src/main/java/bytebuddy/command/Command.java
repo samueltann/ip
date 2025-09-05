@@ -16,5 +16,5 @@ public abstract class Command {
         return isExit;
     }
 
-    public abstract void execute(Storage storage, TaskList tasks, Ui ui);
+    public abstract String execute(Storage storage, TaskList tasks, Ui ui);
 }

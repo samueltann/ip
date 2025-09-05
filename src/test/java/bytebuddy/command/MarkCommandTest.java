@@ -17,10 +17,6 @@ class MarkCommandTest {
     static class FakeUi extends Ui {
         private String lastMessage;
 
-        @Override
-        public void printMarked(Task task, boolean isDone) {
-            lastMessage = "marked=" + isDone;
-        }
 
         String getLastMessage() {
             return lastMessage;

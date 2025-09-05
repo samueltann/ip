@@ -10,7 +10,7 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList tasks, Ui ui) {
-        ui.printFarewell();
+    public String execute(Storage storage, TaskList tasks, Ui ui) {
+        return ui.getFarewellMessage();
     }
 }

@@ -14,11 +14,12 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList tasks, Ui ui) {
+    public String execute(Storage storage, TaskList tasks, Ui ui) {
         if (index >= 0 && index < tasks.getSize()) {
             Task t = tasks.getTask(index);
             t.markAsDone();
-            ui.printMarked(t, true);
+            return ui.getMarkedMessage(t, true);
         }
+        return ui.getErrorMessage("Error: Invalid task index.");
     }
 }

@@ -14,8 +14,8 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(Storage storage, TaskList tasks, Ui ui) {
+    public String execute(Storage storage, TaskList tasks, Ui ui) {
         tasks.addTask(task);
-        ui.printAdded(tasks, task);
+        return ui.getAddedMessage(tasks, task);
     }
 }
