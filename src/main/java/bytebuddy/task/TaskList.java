@@ -27,29 +27,6 @@ public class TaskList implements Iterable<Task> {
         this.tasks = tasks;
     }
 
-
-    /**
-     * Marks the task at the given index as completed.
-     *
-     * @param index Index of the task to mark (0-based).
-     */
-    public void markTask(int index) {
-        if (index >= 0 && index < tasks.size()) {
-            tasks.get(index).markAsDone();
-        }
-    }
-
-    /**
-     * Marks the task at the given index as not completed.
-     *
-     * @param index Index of the task to unmark (0-based).
-     */
-    public void unmarkTask(int index) {
-        if (index >= 0 && index < tasks.size()) {
-            tasks.get(index).markAsNotDone();
-        }
-    }
-
     /**
      * Retrieves the task at the specified index.
      *

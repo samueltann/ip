@@ -12,9 +12,5 @@ public abstract class Command {
         this.isExit = isExit;
     }
 
-    public boolean isExit() {
-        return isExit;
-    }
-
     public abstract String execute(Storage storage, TaskList tasks, Ui ui);
 }

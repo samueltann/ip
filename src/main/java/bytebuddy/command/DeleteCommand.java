@@ -26,6 +26,7 @@ public class DeleteCommand extends Command {
             int idx = Integer.parseInt(body) - 1;
             if (idx >= 0 && idx < tasks.getSize()) {
                 Task removed = tasks.removeTask(idx);
+                assert removed != null : "Task should not be null";
                 return ui.getDeletedMessage(tasks, removed);
             } else {
                 return ui.getErrorMessage("Error: Invalid task index.");

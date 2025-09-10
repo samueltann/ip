@@ -54,6 +54,7 @@ application {
 shadowJar {
     archiveBaseName = "bytebuddy"
     archiveClassifier = null
+    archiveFileName = 'bytebuddy.jar'
 }
 
 run{

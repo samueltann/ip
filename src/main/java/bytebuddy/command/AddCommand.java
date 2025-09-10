@@ -10,6 +10,7 @@ public class AddCommand extends Command {
 
     public AddCommand(Task task) {
         super(false);
+        assert task != null : "Task should not be null";
         this.task = task;
     }
 

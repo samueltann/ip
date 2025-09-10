@@ -17,6 +17,7 @@ public class MarkCommand extends Command {
     public String execute(Storage storage, TaskList tasks, Ui ui) {
         if (index >= 0 && index < tasks.getSize()) {
             Task t = tasks.getTask(index);
+            assert t != null : "Task should not be null";
             t.markAsDone();
             return ui.getMarkedMessage(t, true);
         }

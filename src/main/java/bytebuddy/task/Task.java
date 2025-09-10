@@ -22,6 +22,7 @@ public class Task {
      * @param isDone      Whether the task is already marked as done
      */
     public Task(String description, TaskType taskType, boolean isDone) {
+        assert description != null : "Task description should not be null";
         this.description = description;
         this.isDone = isDone;
         this.taskType = taskType;
