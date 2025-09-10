@@ -75,11 +75,7 @@ public class TaskList implements Iterable<Task> {
      */
     public TaskList findTasks(String keyword) {
         TaskList results = new TaskList();
-        for (Task task : tasks) {
-            if (task.toString().contains(keyword)) {
-                results.addTask(task);
-            }
-        }
+        tasks.stream().filter(t -> t.toString().contains(keyword)).forEach(results::addTask);
         return results;
     }
 
