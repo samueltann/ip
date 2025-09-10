@@ -4,13 +4,13 @@ import bytebuddy.storage.Storage;
 import bytebuddy.task.TaskList;
 import bytebuddy.ui.Ui;
 
-public class UnknownCommand extends Command {
-    public UnknownCommand() {
+public class HelpCommand extends Command {
+    public HelpCommand() {
         super(true);
     }
 
     @Override
     public String execute(Storage storage, TaskList tasks, Ui ui) {
-        return ui.getErrorMessage("Unknown command.\nPlease enter 'help' to see the list of available commands.");
+        return ui.showHelpMessage();
     }
 }
