@@ -99,7 +99,7 @@ public class Parser {
     }
 
     private static Command parseFind(String input) {
-        String keyword = input.length() > 4 ? input.substring(6).trim() : "";
+        String keyword = input.length() > 4 ? input.substring(5).trim() : "";
         return new FindCommand(keyword);
     }
 }
