@@ -70,7 +70,8 @@ public class Parser {
             String body = input.length() > 6 ? input.substring(6).trim() : "";
             return new DeleteCommand(body);
         } else if (input.startsWith("find")) {
-            String keyword = input.length() > 4 ? input.substring(6).trim() : "";
+            String keyword = input.length() > 4 ? input.substring(5).trim() : "";
+            System.out.println("KEYWORD HERE: " +keyword);
             return new FindCommand(keyword);
         } else {
             return new UnknownCommand();
