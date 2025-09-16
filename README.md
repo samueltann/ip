@@ -1,50 +1,61 @@
-# ByteBuddy Project
+# ByteBuddy 🤖☕
 
-ByteBuddy is a Java chatbot project inspired by the Java mascot _Duke_. This project uses JavaFX to provide a graphical user interface (GUI) for interacting with the chatbot.
+ByteBuddy is a **Java chatbot** inspired by the Java mascot _Duke_.  
+It comes with a clean **JavaFX graphical interface (GUI)** for chatting with your personal task assistant.
 
 ---
 
-## Prerequisites
+## ✨ Features
+
+- 🗂️ Manage your tasks (Todo, Deadline, Event)
+- ✅ Mark and unmark tasks as done
+- 🔍 Find tasks by keyword
+- 🆘 Built-in `help` command for guidance
+- 🎉 Loads with sample data on first run to get you started
+- 💻 Simple **JavaFX GUI** for smooth interaction
+
+---
+
+## 📦 Prerequisites
 
 - **JDK 17**
-- Latest version of **IntelliJ IDEA**
-- Optional: Gradle for building and running the project
+- **IntelliJ IDEA** (recommended)
+- **Gradle** (optional; IntelliJ can manage it automatically)
 
 ---
 
-## Setting Up in IntelliJ
+## 🚀 Getting Started
 
+### Open in IntelliJ
 1. Open IntelliJ.  
    *(If you are not on the welcome screen, click `File` > `Close Project` to close any open project.)*
-
 2. Open the project:
-    1. Click `Open`.
-    2. Select the project root directory, and click `OK`.
-    3. Accept any further prompts with the default options.
-
-3. Configure the project to use **JDK 17**:
-    - Go to `File` > `Project Structure` > `Project`.
-    - Set **Project SDK** to JDK 17.
-    - Set **Project language level** to `SDK Default`.
-    - More details: [JetBrains Guide](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk)
-
-4. Running the app:
-    - **Option 1 (IntelliJ):**  
-      Locate the `Main` class under `src/main/java/bytebuddy/gui/Main.java`, right-click it, and choose **Run 'Main.main()'**. The GUI should open with a welcome message from ByteBuddy.
-    - **Option 2 (Terminal / Gradle):**  
-      In the project root folder, run the following command in the terminal:
-      ```
+    - Click **Open**.
+    - Select the project root directory.
+    - Accept any prompts with default options.
+3. Configure **JDK 17**:
+    - `File > Project Structure > Project`
+    - Set **Project SDK** to JDK 17
+    - Set **Project language level** to `SDK Default`  
+      👉 [More details](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk)
+4. Run the app:
+    - **Option 1 (IntelliJ):** Right-click `Main.java` in `src/main/java/bytebuddy/gui/` → **Run 'Main.main()'**
+    - **Option 2 (Gradle):** Run in terminal:
+      ```bash
       ./gradlew run
       ```
-      This will launch the JavaFX GUI.
 
 ---
 
-## Notes
-
-- Keep `src/main/java` as the root folder for Java source files.  
-  *(Do not rename or move Java files outside this folder, as build tools like Gradle expect this structure.)*
-
-- All user interaction now happens via the GUI, so CLI commands are no longer used.
-
+## 📸 Demo
+![ByteBuddyGUIScreenshot.png](src/main/resources/images/ByteBuddyGUIScreenshot.png)
 ---
+
+## 🛠️ Development Notes
+
+- Keep `src/main/java` as the source root.
+- All interaction now happens via the **GUI** (CLI `run()` is deprecated).
+- A GitHub Actions workflow (`.github/workflows/ci.yml`) is included for **CI/CD** – it builds and tests the project on every commit/PR.
+- To package a runnable JAR with JavaFX included:
+  ```bash
+  ./gradlew shadowJar
