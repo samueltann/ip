@@ -57,7 +57,7 @@ public class Ui {
                 + "1. list - Lists all tasks\n"
                 + "2. todo <description> - Adds a todo task\n"
                 + "3. deadline <description> /by <date (yyyy-mm-dd)> - Adds a deadline task\n"
-                + "4. event <description> /at <date time (yyyy-mm-dd HHmm)> - Adds an event task\n"
+                + "4. event <description> /from <date time (yyyy-mm-dd HHmm) /to <date time (yyyy-mm-dd HHmm)> - Adds an event task\n"
                 + "5. mark <task number> - Marks a task as done\n"
                 + "6. unmark <task number> - Marks a task as not done\n"
                 + "7. delete <task number> - Deletes a task\n"

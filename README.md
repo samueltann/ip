@@ -45,12 +45,36 @@ It comes with a clean **JavaFX graphical interface (GUI)** for chatting with you
       ./gradlew run
       ```
 
+## 📖 Usage Guide
+
+Once ByteBuddy is running, you can interact with it through natural commands.  
+Here are all the commands you can use:
+
+1. **`list`** – Lists all tasks currently in your task list.
+2. **`todo <description>`** – Adds a Todo task.
+    - Example: `todo Buy groceries`
+3. **`deadline <description> /by <date (yyyy-mm-dd)>`** – Adds a Deadline task.
+    - Example: `deadline Submit report /by 2025-09-30`
+4. **`event <description> /from <date time (yyyy-mm-dd HHmm)> /to <date time (yyyy-mm-dd HHmm)>`** – Adds an Event task with a start and end time.
+    - Example: `event Hackathon /from 2025-09-20 0900 /to 2025-09-20 2100`
+5. **`mark <task number>`** – Marks a task as done.
+    - Example: `mark 2`
+6. **`unmark <task number>`** – Marks a task as not done.
+    - Example: `unmark 2`
+7. **`delete <task number>`** – Deletes a task.
+    - Example: `delete 3`
+8. **`find <keyword>`** – Finds tasks containing the keyword.
+    - Example: `find report`
+9. **`bye`** – Exits the application gracefully.
+
+💡 Tip: You can type `help` anytime in the app to bring up this command list again.
+
 ---
 
 ## 📸 Demo
-![ByteBuddyGUIScreenshot.png](src/main/resources/images/ByteBuddyGUIScreenshot.png)
----
+![ByteBuddyScreenshot.png](src/main/resources/images/ByteBuddyScreenshot.png)
 
+---
 ## 🛠️ Development Notes
 
 - Keep `src/main/java` as the source root.
