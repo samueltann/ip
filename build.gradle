@@ -48,7 +48,7 @@ test {
 }
 
 application {
-    mainClass.set("bytebuddy.gui.Main")
+    mainClass.set("bytebuddy.gui.Launcher")
 }
 
 shadowJar {
