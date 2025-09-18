@@ -72,8 +72,7 @@ Here are all the commands you can use:
 ---
 
 ## 📸 Demo
-![ByteBuddyScreenshot.png](src/main/resources/images/ByteBuddyScreenshot.png)
-
+![Ui.png](Ui.png)
 ---
 ## Adding todos
 
