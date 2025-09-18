@@ -1,43 +1,10 @@
-# bytebuddy.bytebuddy User Guide
-
-// Update the title above to match the actual product name
-
-// Product screenshot goes here
-
-// Product intro goes here
-
-## Adding deadlines
-
-// Describe the action and its outcome.
-
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
-```
-expected output
-```
-
-## Feature ABC
-
-// Feature details
-
-
-## Feature XYZ
-
-// Feature details
-
 # ByteBuddy User Guide
 
 <!-- Product intro goes here -->
 ByteBuddy is a simple **Java chatbot task manager** that helps you track, organize, and manage your tasks efficiently.  
 It supports **Todos**, **Deadlines**, and **Events**, and allows you to mark, unmark, delete, find tasks, and more.
 It comes with a clean **JavaFX graphical interface (GUI)** for chatting with your personal task assistant.
-
 ---
-
 ## ✨ Features
 
 - 🗂️ Manage your tasks (Todo, Deadline, Event)
@@ -132,9 +99,11 @@ description, and formatted due date.
 `deadline return book /by 2025-09-20`
 
 **Expected outcome:**  
-Got it. I've added this task:<br>
-D | 0 | return book | Sep 20 2025<br>
+```
+Got it. I've added this task:
+D | 0 | return book | Sep 20 2025
 Now you have 2 tasks in the list.
+```
 
 ---
 
@@ -148,10 +117,11 @@ description, and the start datetime, and end datetime.
 `event project meeting /from 2025-09-17 1400 /to 2025-09-17 1600`
 
 **Expected outcome:**  
-Got it. I've added this task:<br>
-E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00<br>
+```
+Got it. I've added this task:
+E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00
 Now you have 3 tasks in the list.
-
+```
 ---
 
 ## Listing tasks
@@ -163,10 +133,12 @@ This shows type, status, description, and extra info for all tasks.
 `list`
 
 **Expected outcome:**  
-Here are the tasks in your list:<br>
-T | 0 | read book<br>
-D | 0 | return book | Sep 20 2025<br>
-E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00<br>
+```
+Here are the tasks in your list:
+T | 0 | read book
+D | 0 | return book | Sep 20 2025
+E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00
+```
 
 ---
 
@@ -179,8 +151,10 @@ The task’s status will change to `1`.
 `mark 1`
 
 **Expected outcome:**  
-Nice! I've marked this task as done:<br>
+```
+Nice! I've marked this task as done:
 T | 1 | read book
+```
 
 ---
 
@@ -193,9 +167,10 @@ The task’s status will revert to `0`.
 `unmark 1`
 
 **Expected outcome:**  
-OK, I've marked this task as not done yet:<br>
+```
+OK, I've marked this task as not done yet:
 T | 0 | read book
-
+```
 ---
 
 ## Deleting tasks
@@ -206,10 +181,11 @@ Remove a task from your list by its task number.
 `delete 2`
 
 **Expected outcome:**  
-Noted. I've removed this task:<br>
-D | 0 | return book | Sep 20 2025<br>
+```
+Noted. I've removed this task:
+D | 0 | return book | Sep 20 2025
 Now you have 2 tasks in the list.
-
+```
 ---
 
 ## Finding tasks
@@ -221,10 +197,11 @@ Matching tasks are displayed with their type, status, description, and extra inf
 `find book`
 
 **Expected outcome:**  
-Here are the matching tasks in your list:<br>
-T | 0 | read book<br>
-D | 0 | return book | Sep 20 2025<br>
-
+```
+Here are the matching tasks in your list:
+T | 0 | read book
+D | 0 | return book | Sep 20 2025
+```
 ---
 
 ## Exiting ByteBuddy
@@ -235,8 +212,9 @@ Exit the application gracefully.
 `bye`
 
 **Expected outcome:**  
+```
 Bye. Hope to see you again soon!
-
+```
 ---
 
 ## Getting help
@@ -247,17 +225,18 @@ Display a list of all available commands and their usage.
 `help`
 
 **Expected outcome:**  
-Here are some commands you can use:<br>
-list - Lists all tasks<br>
-todo <description> - Adds a todo task<br>
-deadline <description> /by <date (yyyy-mm-dd)> - Adds a deadline task<br>
-event <description> /from <yyyy-mm-dd HHmm> /to <yyyy-mm-dd HHmm> - Adds an event task<br>
-mark <task number> - Marks a task as done<br>
-unmark <task number> - Marks a task as not done<br>
-delete <task number> - Deletes a task<br>
-find <keyword> - Finds tasks containing the keyword<br>
+```
+Here are some commands you can use:
+list - Lists all tasks
+todo <description> - Adds a todo task
+deadline <description> /by <date (yyyy-mm-dd)> - Adds a deadline task
+event <description> /from <yyyy-mm-dd HHmm> /to <yyyy-mm-dd HHmm> - Adds an event task
+mark <task number> - Marks a task as done
+unmark <task number> - Marks a task as not done
+delete <task number> - Deletes a task
+find <keyword> - Finds tasks containing the keyword
 bye - Exits the application
-
+```
 ---
 ## 🛠️ Development Notes
 
