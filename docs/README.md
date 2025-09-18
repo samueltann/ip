@@ -178,12 +178,12 @@ T | 0 | read book
 Remove a task from your list by its task number.
 
 **Example:**  
-`delete 2`
+`delete 3`
 
 **Expected outcome:**  
 ```
 Noted. I've removed this task:
-D | 0 | return book | Sep 20 2025
+E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00
 Now you have 2 tasks in the list.
 ```
 ---
