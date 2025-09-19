@@ -2,6 +2,7 @@ package bytebuddy.gui;
 
 import bytebuddy.ByteBuddy;
 import bytebuddy.ui.Ui;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -30,6 +31,12 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.prefWidthProperty().bind(
+                Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds()
+                                .getWidth(),
+                        scrollPane.viewportBoundsProperty()
+                )
+        );
     }
 
     /** Injects the ByteBuddy instance */
