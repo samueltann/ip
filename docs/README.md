@@ -4,7 +4,9 @@
 ByteBuddy is a simple **Java chatbot task manager** that helps you track, organize, and manage your tasks efficiently.  
 It supports **Todos**, **Deadlines**, and **Events**, and allows you to mark, unmark, delete, find tasks, and more.
 It comes with a clean **JavaFX graphical interface (GUI)** for chatting with your personal task assistant.
+
 ---
+
 ## ✨ Features
 
 - 🗂️ Manage your tasks (Todo, Deadline, Event)
@@ -44,6 +46,13 @@ It comes with a clean **JavaFX graphical interface (GUI)** for chatting with you
       ```bash
       ./gradlew run
       ```
+      
+---
+
+## 📸 Demo
+![Ui.png](Ui.png)
+
+---
 
 ## 📖 Usage Guide
 
@@ -71,9 +80,24 @@ Here are all the commands you can use:
 
 ---
 
-## 📸 Demo
-![Ui.png](Ui.png)
+## Listing tasks
+
+List all tasks currently in your list.  
+This shows type, status, description, and extra info for all tasks.
+
+**Example:**  
+`list`
+
+**Expected outcome:**
+```
+Here are the tasks in your list:
+T | 0 | read book
+D | 0 | return book | Sep 20 2025
+E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00
+```
+
 ---
+
 ## Adding todos
 
 Add a **todo task** with only a description.  
@@ -83,11 +107,14 @@ The task will appear in your list with type `T` and status `0` (not done) or `1`
 `todo read book`
 
 **Expected outcome:**  
-Got it. I've added this task:<br>
-T | 0 | read book <br>
+```
+Got it. I've added this task:
+T | 0 | read book
 Now you have 1 task in the list.
+```
 
 ---
+
 ## Adding deadlines
 
 Add a **deadline task** with a description and due date.  
@@ -121,23 +148,6 @@ Got it. I've added this task:
 E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00
 Now you have 3 tasks in the list.
 ```
----
-
-## Listing tasks
-
-List all tasks currently in your list.  
-This shows type, status, description, and extra info for all tasks.
-
-**Example:**  
-`list`
-
-**Expected outcome:**  
-```
-Here are the tasks in your list:
-T | 0 | read book
-D | 0 | return book | Sep 20 2025
-E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00
-```
 
 ---
 
@@ -170,6 +180,7 @@ The task’s status will revert to `0`.
 OK, I've marked this task as not done yet:
 T | 0 | read book
 ```
+
 ---
 
 ## Deleting tasks
@@ -185,6 +196,7 @@ Noted. I've removed this task:
 E | 0 | project meeting | 17 Sep 2025 14:00 to 17 Sep 2025 16:00
 Now you have 2 tasks in the list.
 ```
+
 ---
 
 ## Finding tasks
@@ -201,6 +213,7 @@ Here are the matching tasks in your list:
 T | 0 | read book
 D | 0 | return book | Sep 20 2025
 ```
+
 ---
 
 ## Exiting ByteBuddy
@@ -236,7 +249,9 @@ delete <task number> - Deletes a task
 find <keyword> - Finds tasks containing the keyword
 bye - Exits the application
 ```
+
 ---
+
 ## 🛠️ Development Notes
 
 - Keep `src/main/java` as the source root.
@@ -245,4 +260,5 @@ bye - Exits the application
 - To package a runnable JAR with JavaFX included:
   ```bash
   ./gradlew shadowJar
+  
 ---
