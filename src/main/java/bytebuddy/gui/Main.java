@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private final ByteBuddy byteBuddy = new ByteBuddy("src/main/data/tasks.txt");
+    private final ByteBuddy byteBuddy = new ByteBuddy("data/tasks.txt");
 
     @Override
     public void start(Stage stage) {
