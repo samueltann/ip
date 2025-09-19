@@ -260,5 +260,6 @@ bye - Exits the application
 - To package a runnable JAR with JavaFX included:
   ```bash
   ./gradlew shadowJar
+  ```
   
 ---
